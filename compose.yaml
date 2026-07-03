@@ -1,0 +1,31 @@
+services:
+  app:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8000
+    environment:
+      - PORT=8000
+      - MY_PROJECT=My FastAPI Project
+    env_file:
+      - .env.sample
+    volumes:
+      - ./backend/src:/app
+    develop:
+      watch:
+        - action: rebuild
+          path: backend/requirements.txt
+        - action: rebuild
+          path: backend/Dockerfile
+        - action: restart
+          path: backend/src
+
+  static_html:
+    build: 
+      context: ./static_html
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./static_html/src:/app
