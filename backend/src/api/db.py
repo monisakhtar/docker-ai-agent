@@ -7,7 +7,7 @@ DATABASE_URL = os.environ.get("DATABASE_URL")
 if DATABASE_URL is None:
     raise ValueError("`DATABASE_URL` environment variable is not set.")
 
-DATABASE_URL = DATABASE_URL.replace("postgres://", "postgres+psycopg://")
+DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+psycopg://")
 
 engine = sqlmodel.create_engine(DATABASE_URL)
 
