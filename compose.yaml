@@ -12,6 +12,8 @@ services:
       - .env.sample
     volumes:
       - ./backend/src:/app
+    depends_on:
+      - db_service
     develop:
       watch:
         - action: rebuild
@@ -21,11 +23,27 @@ services:
         - action: restart
           path: backend/src
 
-  static_html:
-    build: 
-      context: ./static_html
-      dockerfile: Dockerfile
+  # static_html:
+  #   build: 
+  #     context: ./static_html
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 8000:8000
+  #   volumes:
+  #     - ./static_html/src:/app
+
+  db_service:
+    image: postgres:15.3-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=postgres
+    # env_file:
+    #   - .env.sample-db
     ports:
-      - 8000:8000
+      - 5432:5432
     volumes:
-      - ./static_html/src:/app
+      - managed_db_volume:/var/lib/postgresql/data
+
+volumes:
+  managed_db_volume:

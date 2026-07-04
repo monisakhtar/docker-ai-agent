@@ -1,4 +1,5 @@
 FROM python:3.13.4-slim-bullseye
+RUN apt-get update && apt-get install -y curl
 
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
