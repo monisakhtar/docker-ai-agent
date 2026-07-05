@@ -1,0 +1,53 @@
+# Generated .gitignore file for: Python, VSCode, Linux, Pip, PostgreSQL, Docker
+# Created with FOSSA's DevOps Tools
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+venv/
+env/
+.env
+*.so
+
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Linux
+# Add Linux-specific ignores here
+
+# Pip
+# Add Pip-specific ignores here
+
+# PostgreSQL
+# Add PostgreSQL-specific ignores here
+
+# Docker
+docker-compose.override.yml
+Dockerfile.override
+.dockerignore
+
+# Common
+.DS_Store
+Thumbs.db
+*.log
+*.bak
+*.tmp
+*.swp
+*~
+
+# IDE and editor generated files
+.idea/
+*.sublime-*
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+.env.sample
