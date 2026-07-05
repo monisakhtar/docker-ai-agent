@@ -1,11 +1,10 @@
-from backend.src.api.ai.llm import get_openai_client
+from .llm import get_openai_client
 
-from backend.src.api.schemas import EmailMessageSchema
+from .schemas import EmailMessageSchema
 
 
 def generate_email(query: str) -> EmailMessageSchema:
-    
-    llm_client = llm.get_openai_client()
+    llm_client = get_openai_client()
     llm = llm_client.with_structured_output_schema(EmailMessageSchema)
     message =[
             (
