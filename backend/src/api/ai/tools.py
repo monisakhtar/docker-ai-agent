@@ -1,8 +1,20 @@
-import html
-
-from langchain.core.tools import tool
+from langchain_core.tools import tool
 from .myemailer.sender import send_email
 from .myemailer.inbox_reader import read_inbox
+from .services import generate_email
+
+@tool
+def research_email(query:str):
+    """
+    Perform research based on the query
+
+    Arguments:
+    - query: str - Topic of research
+    """
+    response = generate_email(query)
+    msg = f'Subject {response.subject}:\nBody: {response.content}'
+    return msg 
+
 
 @tool
 def send_me_email(subject: str, content: str, to_email: str) -> str:
