@@ -58,7 +58,41 @@ compose.yaml                      # app + db_service (+ optional static_html)
 .devcontainer/                    # VS Code Dev Containers config
 ```
 
-## Prerequisites
+## What this project covers
+
+This was built as a hands-on learning project to go from Docker fundamentals to deploying a multi-agent AI system. Topics covered:
+
+**Docker & containerization**
+- Docker fundamentals and writing a custom `Dockerfile`
+- Building custom Docker images and pushing to Docker Hub
+- Using Docker Compose to orchestrate multiple services
+- Docker Compose Watch mode for live-reload development
+- Serving static HTML through Docker
+- Using public open-source containers (Postgres, Redis, etc.)
+- `.dockerignore` and why it matters
+- Mounting and persisting data with volumes
+- Injecting runtime environment variables with env files
+
+**Backend & API**
+- "Hello World" with Docker and FastAPI
+- Nesting API routes in FastAPI
+- Integrating Postgres with FastAPI through Docker
+- Running open-source LLMs locally via Docker Model Runner (Docker Desktop)
+- Testing production-level API calls across Docker, FastAPI, OpenAI, and LangGraph
+
+**AI agents**
+- Integrating LangChain with FastAPI
+- Defining and manually invoking tools with LangChain-based models
+- Using LangGraph to let an agent select and run tools automatically
+- Building a multi-agent system with a LangGraph supervisor
+- Sending email through Gmail and Python's standard library
+- Reading a Gmail inbox with Python
+
+**Deployment**
+- Deploying a Dockerfile-based app to Railway
+- Deploying the same Dockerfile-based app to DigitalOcean
+
+
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) (with Docker Compose) or Docker Engine + Compose plugin
 - Docker Model Runner enabled in Docker Desktop, **or** an OpenAI API key if you'd rather use a hosted model
@@ -88,7 +122,7 @@ compose.yaml                      # app + db_service (+ optional static_html)
    | `OPENAI_BASE_URL` | Base URL for the OpenAI-compatible LLM endpoint | Docker Model Runner (`http://model-runner.docker.internal/engines/v1/`) |
    | `OPENAI_API_KEY` | API key for the LLM endpoint. **Required** — the app raises an error at import time if this is unset | *(empty)* |
    | `OPENAI_MODEL` | Model name/tag to use | `ai/gemma3:270M-F16` |
-   | `EMAIL_ADDRESS` | Gmail address used to send/read mail | `monisakhtar@gmail.com` |
+   | `EMAIL_ADDRESS` | Gmail address used to send/read mail | *(empty)* |
    | `EMAIL_PASSWORD` | Gmail App Password (not your normal password) | *(empty)* |
    | `EMAIL_HOST` | SMTP host | `smtp.gmail.com` |
    | `EMAIL_PORT` | SMTP port | `465` |
